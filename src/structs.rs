@@ -1,0 +1,180 @@
+#[repr(u16)]
+pub enum EncounterStartContext {
+    Normal,
+    Chance,
+    Pinch,
+}
+
+#[repr(C)]
+pub struct BGMTableStruct {
+    pub bgm_name: *const u8,
+    pub field_08: u64,
+    pub field_10: u64,
+}
+
+#[repr(C)]
+pub struct EncountSection1 {
+    pub flags: u32,
+    pub field02: u16,
+    pub field04: u16,
+    pub enemy_id: [u16; 5],
+    pub field_major: u16,
+    pub field_minor: u16,
+    pub bgm: u16,
+    pub field18: u16,
+    pub field1A: u16,
+}
+
+#[repr(C)]
+#[derive(Debug, Clone, Copy)]
+pub struct EncounterContextHolder {
+    pub field00: [u64; 3],
+    pub field18: u16,
+    pub encounter_contex_value: u16,
+}
+
+#[repr(u16)]
+#[derive(Debug, PartialEq, Eq)]
+pub enum BGM {
+    Dummy = 0,
+    Tartarus,
+    BGM002,
+    ColorYourNight,
+    Chance_M,
+    Chance_F,
+    Pinch_M,
+    Pinch_F,
+    MasterOfShadows_F,
+    UnavoidableBattle_F,
+    BurnMyDreadFinal_F,
+    BattleHymnOfTheSoul_F,
+    HeartfulCry,
+    Darkness,
+    BGM014,
+    BGM015,
+    BGM016,
+    BGM017,
+    BGM018,
+    BGM019,
+    BGM020,
+    BGM021,
+    BGM022,
+    BGM023,
+    BGM024,
+    WhenTheMoonsReachingOutStars,
+    MassDestruction,
+    MasterOfShadows,
+    UnavoidableBattle,
+    BurnMyDreadFinal,
+    BattleHymnOfTheSoul,
+    MasterOfTartarus,
+    BGM032,
+    BGM033,
+    BGM034,
+    BGM035,
+    BGM036,
+    BGM037,
+    BGM038,
+    BGM039,
+    BGM040,
+    BGM041,
+    BGM042,
+    BGM043,
+    BGM044,
+    BGM045,
+    BGM046,
+    BGM047,
+    BGM048,
+    BGM049,
+    BGM050,
+    BGM051,
+    BGM052,
+    IwatodaiDorm,
+    VelvetRoom,
+    BGM055,
+    BGM056,
+    BGM057,
+    BGM058,
+    BGM059,
+    Victory,
+    BGM061,
+    GameOver,
+    BGM063,
+    BGM064,
+    BGM065,
+    BGM066,
+    BGM067,
+    BGM068,
+    BGM069,
+    BGM070,
+    BGM071,
+    BGM072,
+    BGM073,
+    BGM074,
+    BGM075,
+    BGM076,
+    BGM077,
+    BGM078,
+    BGM079,
+    BGM080,
+    BGM081,
+    BGM082,
+    BGM083,
+    BGM084,
+    BGM085,
+    BGM086,
+    BGM087,
+    BGM088,
+    BGM089,
+    BGM090,
+    BGM091,
+    BGM092,
+    BGM093,
+    BGM094,
+    BGM095,
+    BGM096,
+    BGM097,
+    BGM098,
+    BGM099,
+    BGM100,
+    BGM101,
+    BGM102,
+    BGM103,
+    BGM104,
+    BGM105,
+    BGM106,
+    BGM107,
+    BGM108,
+    BGM109,
+    BGM110,
+    BGM111,
+    BGM112,
+    BGM113,
+    BGM114,
+    TitleScreen,
+    BGM116,
+    BGM117,
+    BGM118,
+    BGM119,
+    Time,
+    Sun,
+    WipingAllOut,
+    DangerZone,
+    WayOfLife,
+    BGM125,
+    TenderFeelings,
+}
+
+impl std::ops::Index<BGM> for [BGMTableStruct] {
+    type Output = BGMTableStruct;
+
+    fn index(&self, index: BGM) -> &Self::Output {
+        self.get(index as usize).unwrap()
+    }
+}
+
+impl std::ops::IndexMut<BGM> for [BGMTableStruct] {
+    fn index_mut(&mut self, index: BGM) -> &mut Self::Output {
+        self.get_mut(index as usize).unwrap()
+    }
+}
