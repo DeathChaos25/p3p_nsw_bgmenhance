@@ -1,8 +1,5 @@
 mod enums;
 mod structs;
-use skyline::{hooks::InlineCtx, patching::Patch};
-use std::ptr;
-
 const BGM_ENTRY_COUNT: usize = 127;
 
 #[skyline::from_offset(0x00045fc0)]
@@ -67,6 +64,7 @@ pub fn map_bgm_male(bgm: u16) -> u16 {
         3 => structs::BGM::UnavoidableBattle as u16,
         4 => structs::BGM::BurnMyDreadFinal as u16,
         5 => structs::BGM::BattleHymnOfTheSoul as u16,
+        6 => structs::BGM::MasterOfTartarus as u16,
         7 => structs::BGM::HeartfulCry as u16,
         8 => structs::BGM::Darkness as u16,
         _ => match get_encounter_contex_value() {
@@ -83,6 +81,7 @@ pub fn map_bgm_female(bgm: u16) -> u16 {
         3 => structs::BGM::UnavoidableBattle_F as u16,
         4 => structs::BGM::BurnMyDreadFinal_F as u16,
         5 => structs::BGM::BattleHymnOfTheSoul_F as u16,
+        6 => structs::BGM::DangerZone as u16,
         7 => structs::BGM::HeartfulCry as u16,
         8 => structs::BGM::Darkness as u16,
         _ => match get_encounter_contex_value() {
