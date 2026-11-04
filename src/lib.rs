@@ -124,7 +124,7 @@ pub fn play_bgm_from_table_fn(a1: structs::BGM) {
 
 #[skyline::main(name = "modBGMEnhance")]
 pub fn main() {
-    println!("Hello from skyline plugin");
+    println!("Hello from modBGMEnhance plugin");
 
     // Install panic hook to display errors on the screen, since we don't have a network logger for now
     std::panic::set_hook(Box::new(|info| {
